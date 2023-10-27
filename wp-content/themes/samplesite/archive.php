@@ -1,8 +1,3 @@
-<head>
-<meta charset="UTF-8">
-<?php wp_head(); ?>
-</head>
-<body>
 <?php get_header(); ?>
 <div id="slide">
         <ul class="slide-inner">
@@ -39,7 +34,6 @@
                         </div>
                         <div class="b_right"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></div></dd>
                         <?php endwhile; endif; ?>
-                        <?php wp_pagenavi(); ?>
                     </dl>
                 </div>
                 <div class="information">
@@ -56,17 +50,7 @@
                 </div>
             </div>
             </div>
-            <div id="cont_right">
-                <div class="sub-menu">
-                    <h3>SERVICE</h3>
-                    <h4>Web事業</h4>
-                    <ul>
-                        <li><a href="<?php echo home_url(); ?>service#s1">ホームページ制作</a></li>
-                        <li><a href="<?php echo home_url(); ?>service#s2">エンジニア派遣</a></li>
-                    </ul>
-                </div>
-            </div>
+            <?php get_sidebar(); ?>
         </div>
     </div>
 <?php get_footer(); ?>
-</body>

@@ -1,23 +1,6 @@
 <head>
 <meta charset="UTF-8">
-<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.js"></script>
-<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/common.js"></script>
-<script type="text/javascript">
-$(function() {
-    $('#slide').slideshow({
-        autoSlide    : true,
-        effect       : 'fade',
-        type         : 'repeat',
-        interval     : 2000,
-        duration     : 500,
-        imgHoverStop : true,
-        navHoverStop : true
-    });
-});
-</script>
-<title>SAMPLE SITE</title>
- <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/style.css">
- <?php wp_head(); ?>
+<?php wp_head(); ?>
 </head>
 <body>
 <?php get_header(); ?>

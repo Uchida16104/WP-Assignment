@@ -552,16 +552,16 @@ footer li a:hover {
     color: white;
 }
 .tag_blog{
-    background: yellow;
-    color: black;
+    background: black;
+    color: white;
 }
 .tag_life{
-    background: turquoise;
-    color: black;
+    background: olive;
+    color: white;
 }
 .tag_event{
-    background: orange;
-    color: black;
+    background: brown;
+    color: white;
 }
 .tag_hobby{
     background: purple;

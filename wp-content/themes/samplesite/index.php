@@ -56,7 +56,16 @@
                             <img src="<?php echo get_template_directory_uri(); ?>/images/sample.jpg">
                         <?php endif; ?>
                         </div>
-                        <div class="b_right"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></div></dd>
+                        <div class="b_right"><a href="<?php the_permalink(); ?>"><?php the_title(); ?>
+                        <br><br>
+                        <?php
+                        if ( mb_strlen( $post->post_content, 'UTF-8' ) > 100 ) {
+                            $content = mb_substr( wp_strip_all_tags( $post->post_content ), 0, 30, 'UTF-8' );
+                            echo $content . '…';
+                        } else {
+                            echo wp_strip_all_tags( $post->post_content, $remove_breaks = true);
+                        }
+                        ?></a></div></dd>
                         <?php endwhile; endif; ?>
                         <?php wp_pagenavi(); ?>
                     </dl>

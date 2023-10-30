@@ -56,7 +56,7 @@
                             <img src="<?php echo get_template_directory_uri(); ?>/images/sample.jpg">
                         <?php endif; ?>
                         </div>
-                        <div class="b_right"><a href="<?php the_permalink(); ?>"><?php the_title(); ?>
+                        <div class="b_right"><a href="<?php the_permalink(); ?>"><h5><?php the_title(); ?></h5>
                         <br><br>
                         <?php
                         if ( mb_strlen( $post->post_content, 'UTF-8' ) > 100 ) {

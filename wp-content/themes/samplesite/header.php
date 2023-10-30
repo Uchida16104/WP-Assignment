@@ -22,7 +22,34 @@ $(function() {
 </script>
 <header>
         <div class="container">
+            <?php if( strtotime(get_the_date('Y-m-d')) < strtotime('2023-10-15') ): ?>
             <h1><a href="<?php echo home_url(); ?>/"><img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" alt="SAMPLE WEB SITE" /></a></h1>
+            <?php else : ?>
+            <style>
+                @keyframes loop{
+                    0%{
+                        transform: scale3d(1, 1, 1) translate3d(20px, 0px, 20px);
+                    }
+                    25%{
+                        transform: scale3d(0, 0, 0) translate3d(0px, 0px, 0px);
+                    }
+                    50%{
+                        transform: scale3d(-1, -1, 1) translate3d(-20px, 0px, -20px);
+                    }
+                    75%{
+                        transform: scale3d(0, 0, 0) translate3d(0px, 0px, 0px);
+                    }
+                    100%{
+                        transform: scale3d(1, 1, 1) translate3d(20px, 0px, 20px);
+                    }
+                }
+                h1 img{
+                    font-size: 40px;
+                    animation: loop 600s ease infinite;
+                }
+            </style>
+            <h1><a href="<?php echo home_url(); ?>/"><img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" alt="SAMPLE WEB SITE" /></a></h1>
+            <?php endif; ?>
             <div id="menu">
                 <ul>
                     <li class="home"><a href="<?php echo home_url(); ?>/">TOP</a></li>

@@ -2,8 +2,8 @@
 <meta charset="UTF-8">
 <?php wp_head(); ?>
 </head>
-<?php if( strtotime(get_the_date('Y-m-d')) > strtotime('2023-10-15') ): ?>
 <body>
+<?php if( strtotime(get_the_date('Y-m-d')) > strtotime('2023-10-15') ): ?>
 <style>
     body{
         font-weight:bold;
@@ -11,25 +11,33 @@
         height: 100vh;
         background: linear-gradient(90deg, #fff0f0,#f0fff0,#f0f0ff);
         background-size: 200% 200%;
-        animation: bg-color 20s ease infinite;
+        animation: bg-color 60s ease infinite;
     }
     @keyframes bg-color {
-        0%{background-position:0% 50%;}
-        50%{background-position:100% 50%;}
-        100%{background-position:0% 50%;}
+        0%{
+            background: linear-gradient(90deg, #fff0f0,#f0fff0,#f0f0ff);
+            background-position:0% 50%;
+        }
+        50%{
+            background: linear-gradient(90deg, #f0fff0,#f0f0ff,#fff0f0);
+            background-position:100% 50%;
+        }
+        100%{
+            background: linear-gradient(90deg, #f0f0ff,#fff0f0,#f0fff0);
+            background-position:0% 50%;
+        }
     }
 </style>
-<?php get_header(); ?>
 <?php else : ?>
-<body>
 <style>
     body{
         background: linear-gradient(90deg, #ffefef, transparent);
     }
 </style>
-<?php get_header(); ?>
 <?php endif; ?>
+<?php get_header(); ?>
 <div id="slide">
+    <?php if( strtotime(get_the_date('Y-m-d')) < strtotime('2023-10-01') ): ?>
         <ul class="slide-inner">
             <li></li>
             <li></li>
@@ -38,6 +46,46 @@
          <div class="s-prev"><img src="<?php echo get_template_directory_uri(); ?>/images/nav_prev.png" alt="前へ"></div>
          <div class="s-next"><img src="<?php echo get_template_directory_uri(); ?>/images/nav_next.png" alt="次へ"></div>
          <div class="cont-nav"></div>
+    <?php else : ?>
+        <script src="https://unpkg.com/hydra-synth"></script>
+        <canvas class="slide-inner" id="myCanvas"></canvas>
+        <style>
+            #myCanvas {
+                height: 390px;
+                width: 100%;
+                padding: 0;
+                margin: 0;
+                background-size: cover;
+            }
+        </style>
+        <script>
+        var hydra = new Hydra({
+            canvas: document.getElementById("myCanvas"), 
+            detectAudio: false,
+            enableStreamCapture: false,
+        })
+        function keyControl() {
+            value1 = 5;
+            value2 = 99 / 100;
+            value3 = 5;
+            value4 = 1 / 20
+            document.addEventListener('keydown', () => {
+                value1 = 3;
+                value2 = 9 / 10;
+                value3 = 0;
+                value4 = 1 / 100;
+            });
+            document.addEventListener('keyup', () => {
+                value1 = 5;
+                value2 = 99 / 100;
+                value3 = 5;
+                value4 = 1 / 20;
+            });
+        }
+        keyControl();
+        solid().add(gradient("(st.x-st.y)/time").colorama(() => value4).contrast(() => value3).mult(src(o0).modulateHue(src(o0).scale(1.01), 2).layer(shape(4, 0, 1).colorama(() => value1).mask(voronoi()))).rotate([0, Math.PI].ease('easeInOutCubic').fit(Math.sin(time / 10), Math.tan(time / 20)).smooth().offset(() => Math.cos(time)).ease(() => Math.tan(time / 30)).fast(time)), [1, 0].smooth()).add(noise(() => value1 * 10).posterize(2, 2).pixelate(50, 50).saturate(() => value3).mult(osc(1, 2, 300)), [0, 1].smooth()).blend(o0, () => value2).out(o0);
+        </script>
+    <?php endif; ?>
 </div>
 <div id="cont_first" class="container">
     <div id="contents" class="single">

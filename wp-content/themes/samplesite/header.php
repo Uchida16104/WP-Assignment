@@ -1,6 +1,12 @@
 <?php get_header(); ?>
 <?php if ( is_home() || is_front_page() ) : ?>
-    <title><?php bloginfo('name'); ?></title>
+    <meta name="description" content="<?php bloginfo('description'); ?>"><title><?php bloginfo('name'); ?></title>
+<?php elseif( is_category() ): ?>
+    <meta name="description" content="<?php echo category_description(); ?>"><title><?php bloginfo('name'); ?></title>
+<?php elseif( is_tag() ): ?>
+    <meta name="description" content="<?php echo tag_description(); ?>"><title><?php bloginfo('name'); ?></title>
+<?php elseif( is_singular() ): ?>
+    <meta name="description" content="<?php echo get_the_excerpt(); ?>"><title><?php bloginfo('name'); ?></title>
 <?php else : ?>
     <title><?php bloginfo('name'); ?> | <?php wp_title(); ?></title>
 <?php endif; ?>

@@ -13,3 +13,8 @@ array(
 add_theme_support('post-thumbnails');
 add_image_size('thumbside', 85, 85, true);
 ?>
+
+<?php
+add_post_type_support('page', 'excerpt');
+remove_filter('term_description','wpautop');
+?>

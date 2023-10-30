@@ -553,15 +553,15 @@ footer li a:hover {
 }
 .tag_blog{
     background: yellow;
-    color: white;
+    color: black;
 }
 .tag_life{
     background: turquoise;
-    color: white;
+    color: black;
 }
 .tag_event{
     background: orange;
-    color: white;
+    color: black;
 }
 .tag_hobby{
     background: purple;

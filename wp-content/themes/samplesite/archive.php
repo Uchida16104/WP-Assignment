@@ -1,54 +1,27 @@
-<?php get_header(); ?>
-<div id="slide">
-        <ul class="slide-inner">
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
-         <div class="s-prev"><img src="<?php echo get_template_directory_uri(); ?>/images/nav_prev.png" alt="前へ"></div>
-         <div class="s-next"><img src="<?php echo get_template_directory_uri(); ?>/images/nav_next.png" alt="次へ"></div>
-         <div class="cont-nav"></div>
-    </div>
-<div id="cont_first" class="container">
-        <div id="contents" class="single">
-        <div class="main">
+<?php get_header(); ?>	
+
+    <div id="cont_first" class="container">
         <div class="">
-            <?php if(function_exists('bcn_display')) 
-            {
-                bcn_display();
-                }?>
+        <?php if(function_exists('bcn_display'))
+        {
+        bcn_display();
+        }?>
         </div>
+        <div id="contents">
             <div id="cont_left">
-                <div class="information">
-                    <h2>Blog</h2>
-                    <dl class="blog">
-                        <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-                        <dt><?php the_time('Y-m-d'); ?></dt>
-                        <dd>
-                        <div class="b_img">
-                        <?php if (has_post_thumbnail()) : ?>
-                            <?php the_post_thumbnail(); ?>
-                            <?php else: ?>
-                            <img src="<?php echo get_template_directory_uri(); ?>/images/sample.jpg">
-                        <?php endif; ?>
-                        </div>
-                        <div class="b_right"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></div></dd>
-                        <?php endwhile; endif; ?>
-                    </dl>
-                </div>
                 <div class="information">
                     <h2>INFORMATION</h2>
                     <dl>
-                    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-                        <dt><?php the_time('Y-m-d'); ?></dt>
-                        <dd>
-                        <span class="tab tag_<?php $cat = get_the_category(); $cat = $cat[0]; { echo $cat->slug; } ?>"> <?php $cat = get_the_category(); $cat = $cat[0]; { echo $cat->cat_name; } ?> </span>
-                        <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>を掲載しました</dd>
-                    <?php endwhile; endif; ?>
-                    <?php wp_pagenavi(); ?>
+                        <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+                            <dt><?php the_time('Y-m-d'); ?></dt>
+                            <dd>
+                                <span class="tab tag_<?php $cat = get_the_category(); $cat = $cat[0]; { echo $cat->slug; } ?>"> <?php $cat = get_the_category(); $cat = $cat[0]; { echo $cat->cat_name; } ?> </span>
+                                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>を掲載しました。
+                            </dd>
+                        <?php endwhile; endif; ?>
                     </dl>
                 </div>
-            </div>
+                <?php wp_pagenavi(); ?>
             </div>
             <?php get_sidebar(); ?>
         </div>

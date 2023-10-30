@@ -1,8 +1,3 @@
-<head>
-<meta charset="UTF-8">
-<?php wp_head(); ?>
-</head>
-<body>
 <?php get_header(); ?>
 <div id="slide">
         <ul class="slide-inner">
@@ -73,5 +68,4 @@
     <div id="pageTop">
         <a href="#">PAGE TOP</a>
     </div>
-    <?php get_footer(); ?>
-</body>
+<?php get_footer(); ?>

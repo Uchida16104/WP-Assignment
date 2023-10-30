@@ -108,8 +108,11 @@
 <?php the_tags(); ?>
 <?php
 $terms = get_the_terms($post->ID,array('language','programming'));
-foreach( $terms as $term ) {
-    echo ",".$term->name;
+if ( $terms ) {
+	foreach ( $terms as $term ) {
+		$term_link = get_term_link( $term );
+		echo ','.'<a href="'.esc_url( $term_link ).'">'.$term->name.'</a>';
+	}
 }
 ?>
 <?php get_footer(); ?>
